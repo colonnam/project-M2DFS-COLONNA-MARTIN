@@ -14,12 +14,13 @@ import java.util.Date;
 public class MeteoServiceDelegate {
     @Autowired
     RestTemplate restTemplate;
+    String KEY="Ggk2Vedu1VSyCNjXojuV2RtMG3mDZRlH";
 
     @HystrixCommand(fallbackMethod = "callMeteoServiceAndGetData_Fallback")
     public String callMeteoServiceAndGetData(String location) {
         System.out.println("Getting meteo details for " + location);
         String response = restTemplate
-                .exchange("http://dataservice.accuweather.com/forecasts/v1/daily/1day/{location}?apikey=WF33Ih3mcc83E5aiGvbEEBMZaWyw0eLE&language=fr-fr&metric=true"
+                .exchange("http://dataservice.accuweather.com/forecasts/v1/daily/1day/{location}?apikey="+this.KEY+"&language=fr-fr&metric=true"
                         , HttpMethod.GET
                         , null
                         , new ParameterizedTypeReference<String>() {
