@@ -26,6 +26,8 @@ export class MeteoComponent implements OnInit {
   }
 
   chercheLieu(){
+    this.meteo=undefined
+    this.previsions=[]
     this.error=false
     if (this.name.value!=''){
       this.lieux=[]
@@ -44,6 +46,7 @@ export class MeteoComponent implements OnInit {
   
 
   getmeteo(lieu:Lieu){
+    this.previsions=[]
     this.error=false
     this.lieuCourant=lieu
     lieu.key
