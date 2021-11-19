@@ -1,6 +1,39 @@
-<label for="name">Name: </label>
-<input id="name" type="text" [formControl]="name">
+<div id="navigator">
+    <label for="name">Name: </label>
+    <input id="name" type="text" [formControl]="name">
 
-<button (click)="updateName()">Update Name</button>
+    <button (click)="chercheLieu()">Rechercher</button>
 
-<div *ngIf="hasdata()">{{data.Headline.Text}}</div>
+    <table *ngIf="lieux.length>0">
+        <thead>
+            <th>choisser le bon lieu</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let lieu of lieux" (click)="getmeteo(lieu)">
+                {{lieu.nom}}({{lieu.pays}},{{lieu.region}})
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h1 *ngIf="error==true">problème de connection</h1>
+
+<div *ngIf="meteo!=undefined" id="resultat">
+    <p>
+        meteo à {{lieuCourant?.nom}}:
+        {{meteo?.meteo}}
+        {{meteo?.temperature}}
+    </p>
+   
+    <button (click)="getPrevisions(lieuCourant)">prévisions</button>
+
+    <table *ngIf="previsions.length>0">
+        <thead>
+            <th>prévisions météo : </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prevision of previsions">
+                prevision du {{prevision.date}}  : temperature minimale de {{prevision.min}} et maximale de {{prevision.max}}, la météo de la journée est : {{prevision.jour}} et de la nuit : {{prevision.nuit}} 
+            </tr>
+        </tbody>
+    </table>
+</div>

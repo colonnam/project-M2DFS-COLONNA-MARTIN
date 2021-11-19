@@ -14,13 +14,13 @@ import java.util.Date;
 public class MeteoServiceDelegate {
     @Autowired
     RestTemplate restTemplate;
-    String KEY="Ggk2Vedu1VSyCNjXojuV2RtMG3mDZRlH";
+    String KEY="fnbRYAAGhzNe9GMpwHpKrWpxQdMGkURi";
 
-    @HystrixCommand(fallbackMethod = "callMeteoServiceAndGetData_Fallback")
-    public String callMeteoServiceAndGetData(String location) {
-        System.out.println("Getting meteo details for " + location);
+    @HystrixCommand(fallbackMethod = "callMeteoCouranteServiceAndGetData_Fallback")
+    public String callMeteoCouranteServiceAndGetData(String location) {
+        System.out.println("Getting meteo corrante for " + location);
         String response = restTemplate
-                .exchange("http://dataservice.accuweather.com/forecasts/v1/daily/1day/{location}?apikey="+this.KEY+"&language=fr-fr&metric=true"
+                .exchange("http://dataservice.accuweather.com/currentconditions/v1/{location}?apikey="+this.KEY+"&language=fr-fr&metric=true"
                         , HttpMethod.GET
                         , null
                         , new ParameterizedTypeReference<String>() {
@@ -34,13 +34,36 @@ public class MeteoServiceDelegate {
     }
 
     @SuppressWarnings("unused")
-    private String callMeteoServiceAndGetData_Fallback(String location) {
+    private String callMeteoCouranteServiceAndGetData_Fallback(String location) {
         System.out.println("meteo Service is down!!! fallback route enabled...");
-        return "CIRCUIT BREAKER ENABLED!!!No Response From Student Service at this moment. Service will be back shortly - " + new Date();
+        return "CIRCUIT BREAKER ENABLED!!!No Response From  courante at this moment. Service will be back shortly - " + new Date();
+    }
+
+    @HystrixCommand(fallbackMethod = "callPrevisionsServiceAndGetData_Fallback")
+    public String callPrevisionsServiceAndGetData(String location) {
+        System.out.println("Getting meteo details for " + location);
+        String response = restTemplate
+                .exchange("http://dataservice.accuweather.com/forecasts/v1/daily/5day/{location}?apikey="+this.KEY+"&language=fr-fr&metric=true"
+                        , HttpMethod.GET
+                        , null
+                        , new ParameterizedTypeReference<String>() {
+                        }, location).getBody();
+
+        System.out.println("Response Received as " + response + " -  " + new Date());
+
+        System.out.println( "NORMAL FLOW !!! - Location -  " + location + " :::  Location weather " + response + " -  " + new Date());
+
+        return response;
+    }
+
+    @SuppressWarnings("unused")
+    private String callPrevisionsServiceAndGetData_Fallback(String location) {
+        System.out.println("meteo previsions Service is down!!! fallback route enabled...");
+        return "CIRCUIT BREAKER ENABLED!!!No Response From previsions Service at this moment. Service will be back shortly - " + new Date();
     }
 
     @Bean
-    public RestTemplate restTemplate() {
+    public RestTemplate restTemplate2() {
         return new RestTemplate();
     }
 }

@@ -1,6 +1,6 @@
 package com.meteo.standard.controller;
 
-import com.meteo.standard.delegate.MeteoServiceDelegate;
+import com.meteo.standard.delegate.LieuServiceDelegate;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -10,14 +10,14 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Api(value = "SwaggerMeteoRestController")
+@Api(value = "lieu")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class MeteoServiceController {
+public class LieuServiceController {
 
     @Autowired
-    MeteoServiceDelegate meteoServiceDelegate;
+    LieuServiceDelegate lieuServiceDelegate;
 
-    @ApiOperation(value = "Get list of Students in the System ", response = Iterable.class, tags = "getMeteoByLocationKey")
+    @ApiOperation(value = "Get list of Students in the System ", response = Iterable.class, tags = "getlieu")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Suceess|OK"),
             @ApiResponse(code = 400, message = "Request had bad syntax or the parameters supplied were invalid"),
@@ -27,15 +27,10 @@ public class MeteoServiceController {
             @ApiResponse(code = 500, message = "Server encountered an unexpected condition which prevented it from fulfilling the request"),
     })
 
-    @RequestMapping(value = "/getMeteoCourante/{location}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getMeteo(@PathVariable String location) {
-
-        return meteoServiceDelegate.callMeteoCouranteServiceAndGetData(location);
+    @RequestMapping(value = "/getlieu/{location}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getLieu(@PathVariable String location) {
+        System.out.println("Going to call student service to get data!");
+        return lieuServiceDelegate.callLieuServiceAndGetData(location);
     }
-    @RequestMapping(value = "/getPrevisions/{location}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getPrevisions(@PathVariable String location) {
-        return meteoServiceDelegate.callPrevisionsServiceAndGetData(location);
-    }
-
 
 }

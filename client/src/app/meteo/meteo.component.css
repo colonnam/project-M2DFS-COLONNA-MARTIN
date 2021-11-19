@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    border-radius: 5%;
+    cursor: pointer;
+ }
+ th {
+    height: 50px;
+    border: 1px solid black;
+ }
+ tr {
+    
+ }
+ tr:hover{
+     background-color:aqua
+ }
+ #navigator.table{
+    background-color:beige
+ }
+ #resultat.table{
+    background-color:grey
+ }

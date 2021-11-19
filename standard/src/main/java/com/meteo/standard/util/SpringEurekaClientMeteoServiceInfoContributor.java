@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collections;
 
 @Component
-public class SpringEurekaClientSchoolServiceInfoContributor implements InfoContributor {
+public class SpringEurekaClientMeteoServiceInfoContributor implements InfoContributor {
 
     @Override
     public void contribute(Info.Builder builder) {
