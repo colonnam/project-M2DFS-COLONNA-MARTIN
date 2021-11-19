@@ -7,9 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="standard" />
+        <module name="com-self-sprintboot-learning-eureka" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="com-self-sprintboot-learning-eureka" target="1.8" />
       <module name="standard" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Eureka-server/com-self-sprintboot-learning-eureka.iml" filepath="$PROJECT_DIR$/Eureka-server/com-self-sprintboot-learning-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/project-M2DFS-COLONNA-MARTIN.iml" filepath="$PROJECT_DIR$/.idea/project-M2DFS-COLONNA-MARTIN.iml" />
       <module fileurl="file://$PROJECT_DIR$/standard/standard.iml" filepath="$PROJECT_DIR$/standard/standard.iml" />
     </modules>
