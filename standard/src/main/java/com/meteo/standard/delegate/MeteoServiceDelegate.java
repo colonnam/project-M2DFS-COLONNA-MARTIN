@@ -19,7 +19,7 @@ public class MeteoServiceDelegate {
     public String callMeteoServiceAndGetData(String location) {
         System.out.println("Getting meteo details for " + location);
         String response = restTemplate
-                .exchange("http://dataservice.accuweather.com/forecasts/v1/daily/1day/{schoolname}?apikey=WF33Ih3mcc83E5aiGvbEEBMZaWyw0eLE"
+                .exchange("http://dataservice.accuweather.com/forecasts/v1/daily/1day/{location}?apikey=WF33Ih3mcc83E5aiGvbEEBMZaWyw0eLE"
                         , HttpMethod.GET
                         , null
                         , new ParameterizedTypeReference<String>() {
