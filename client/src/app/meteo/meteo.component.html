@@ -1,12 +1,11 @@
 <div id="navigator">
-    <label for="name">Rentrez une ville: </label>
-    <input id="name" type="text" [formControl]="name">
+    <input id="name" type="text" [formControl]="name" placeholder="Rentrez une ville">
 
     <button (click)="chercheLieu()">Rechercher</button>
 
     <table *ngIf="lieux.length>0">
         <thead>
-            <th>choisser le bon lieu</th>
+            <th>choisissez le lieu précis</th>
         </thead>
         <tbody>
             <tr *ngFor="let lieu of lieux" (click)="getmeteo(lieu)">
@@ -18,14 +17,14 @@
 <h1 *ngIf="error==true">problème de connection</h1>
 
 <div *ngIf="meteo!=undefined" id="resultat">
-    <p>
+    <h1>
+        {{meteo?.date}}   
+    </h1>
+    <h1>
         meteo à {{lieuCourant?.nom}}:
         {{meteo?.meteo}}
         {{meteo?.temperature}}
-        {{meteo?.date}}
-
-        
-    </p>
+    </h1>
    
     <button (click)="getPrevisions(lieuCourant)">prévisions</button>
 

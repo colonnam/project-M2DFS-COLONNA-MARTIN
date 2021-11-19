@@ -14,7 +14,7 @@ import java.util.Date;
 public class LieuServiceDelegate {
     @Autowired
     RestTemplate restTemplate;
-    String KEY="g6DWxIgCKKiLUoDYgbXRoGyfbzMkOfek\n";
+    String KEY="4JJAj8nBGsdxidT9Kdw9Uf5MaNRydp3U";
 
     @HystrixCommand(fallbackMethod = "callLieuServiceAndGetData_Fallback")
     public String callLieuServiceAndGetData(String location) {

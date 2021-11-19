@@ -14,7 +14,7 @@ import java.util.Date;
 public class MeteoServiceDelegate {
     @Autowired
     RestTemplate restTemplate;
-    String KEY="g6DWxIgCKKiLUoDYgbXRoGyfbzMkOfek\n";
+    String KEY="4JJAj8nBGsdxidT9Kdw9Uf5MaNRydp3U";
 
     @HystrixCommand(fallbackMethod = "callMeteoCouranteServiceAndGetData_Fallback")
     public String callMeteoCouranteServiceAndGetData(String location) {
