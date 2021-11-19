@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.spring.web.json.Json;
 
 @RestController
 @Api(value = "lieu")
@@ -17,7 +18,7 @@ public class LieuServiceController {
     @Autowired
     LieuServiceDelegate lieuServiceDelegate;
 
-    @ApiOperation(value = "Get list of Students in the System ", response = Iterable.class, tags = "getlieu")
+    @ApiOperation(value = "lieux recherché ", response = Json.class, tags = "getLieu")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Suceess|OK"),
             @ApiResponse(code = 400, message = "Request had bad syntax or the parameters supplied were invalid"),
@@ -29,7 +30,6 @@ public class LieuServiceController {
 
     @RequestMapping(value = "/getlieu/{location}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public String getLieu(@PathVariable String location) {
-        System.out.println("Going to call student service to get data!");
         return lieuServiceDelegate.callLieuServiceAndGetData(location);
     }
 

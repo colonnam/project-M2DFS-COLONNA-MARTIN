@@ -14,7 +14,7 @@ import java.util.Date;
 public class LieuServiceDelegate {
     @Autowired
     RestTemplate restTemplate;
-    String KEY="fnbRYAAGhzNe9GMpwHpKrWpxQdMGkURi";
+    String KEY="g6DWxIgCKKiLUoDYgbXRoGyfbzMkOfek\n";
 
     @HystrixCommand(fallbackMethod = "callLieuServiceAndGetData_Fallback")
     public String callLieuServiceAndGetData(String location) {
@@ -25,7 +25,6 @@ public class LieuServiceDelegate {
                         , null
                         , new ParameterizedTypeReference<String>() {
                         }, location).getBody();
-
         System.out.println("Response Received as " + response + " -  " + new Date());
 
         System.out.println( "NORMAL FLOW !!! - Location -  " + location + " :::  Location weather " + response + " -  " + new Date());

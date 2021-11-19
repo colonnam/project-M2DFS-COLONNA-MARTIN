@@ -1,5 +1,5 @@
 <div id="navigator">
-    <label for="name">Name: </label>
+    <label for="name">Rentrez une ville: </label>
     <input id="name" type="text" [formControl]="name">
 
     <button (click)="chercheLieu()">Rechercher</button>
@@ -22,6 +22,9 @@
         meteo à {{lieuCourant?.nom}}:
         {{meteo?.meteo}}
         {{meteo?.temperature}}
+        {{meteo?.date}}
+
+        
     </p>
    
     <button (click)="getPrevisions(lieuCourant)">prévisions</button>

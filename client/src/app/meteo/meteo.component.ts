@@ -49,7 +49,7 @@ export class MeteoComponent implements OnInit {
     lieu.key
     console.log(lieu.key)
     this.service.getMeteo(lieu.key).subscribe((data:any)=>{
-      this.meteo=new MeteoCourante(data[0].WeatherText,data[0].Temperature.Metric.Value+data[0].Temperature.Metric.Unit)
+      this.meteo=new MeteoCourante(data[0].WeatherText,data[0].Temperature.Metric.Value+" °"+data[0].Temperature.Metric.Unit)
     console.log(this.lieuCourant?.nom+": "+this.meteo)
     },
     (error) => {                              //Error callback
