@@ -2,7 +2,7 @@
 
 démarrer client angular : ng serve --open
 
-http://localhost:4200/meteo
+-> http://localhost:4200/meteo
 
 curl http://localhost:8080/getPrevisions/200
 
@@ -10,3 +10,6 @@ curl http://localhost:8080/getMeteoCourante/200
 
 curl http://localhost:8080/getlieu/corte
 
+eureka dashboard: http://localhost:8761/
+
+hystrix dashboard: http://localhost:8080/hystrix
